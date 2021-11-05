@@ -1,0 +1,8 @@
+- Introduction
+- Understanding `ChatTheme` Component
+- Customizing your `ChatTheme` Component
+- Adding Custom Colors
+- Adding Custom Shapes
+- Adding Custom Typography
+- Joining the Pieces Together
+- Conclusion
