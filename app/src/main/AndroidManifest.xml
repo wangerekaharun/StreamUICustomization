@@ -10,7 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StreamUICustomization">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MessagesActivity"
+            android:exported="false"
+            android:label="@string/title_activity_messages"
+            android:theme="@style/Theme.StreamUICustomization.NoActionBar" />
+        <activity
+            android:name=".ui.activities.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.StreamUICustomization.NoActionBar">

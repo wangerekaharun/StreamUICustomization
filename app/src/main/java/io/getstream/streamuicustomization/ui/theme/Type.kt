@@ -1,28 +1,85 @@
 package io.getstream.streamuicustomization.ui.theme
 
-import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import io.getstream.chat.android.compose.ui.theme.StreamTypography
+import io.getstream.streamuicustomization.R
 
-// Set of Material typography styles to start with
-val Typography = Typography(
-    body1 = TextStyle(
-        fontFamily = FontFamily.Default,
+val Chirp = FontFamily(
+    Font(R.font.chirp_regular),
+    Font(R.font.chirp_bold, FontWeight.Bold)
+)
+
+val StreamCustomTypography = StreamTypography(
+    title1 = TextStyle(
+        fontFamily = Chirp,
+        fontWeight = FontWeight.Normal,
+        fontSize = 18.sp
+    ),
+
+    title3 = TextStyle(
+        fontFamily = Chirp,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
-    )
-    /* Other default text styles to override
-    button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W500,
+    ),
+
+    title3Bold = TextStyle(
+        fontFamily = Chirp,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp
+    ),
+
+    body = TextStyle(
+        fontFamily = Chirp,
+        fontWeight = FontWeight.Normal,
         fontSize = 14.sp
     ),
-    caption = TextStyle(
-        fontFamily = FontFamily.Default,
+
+    bodyItalic = TextStyle(
+        fontFamily = Chirp,
+        fontWeight = FontWeight.Normal,
+        fontStyle = FontStyle.Italic,
+        fontSize = 14.sp
+    ),
+
+    bodyBold = TextStyle(
+        fontFamily = Chirp,
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp
+    ),
+
+    footnote = TextStyle(
+        fontFamily = Chirp,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp
+    ),
+
+    footnoteItalic = TextStyle(
+        fontFamily = Chirp,
+        fontWeight = FontWeight.Normal,
+        fontStyle = FontStyle.Italic,
+        fontSize = 12.sp
+    ),
+
+    footnoteBold = TextStyle(
+        fontFamily = Chirp,
+        fontWeight = FontWeight.Bold,
+        fontSize = 12.sp
+    ),
+
+    captionBold = TextStyle(
+        fontFamily = Chirp,
+        fontWeight = FontWeight.Bold,
+        fontSize = 12.sp
+    ),
+
+    tabBar = TextStyle(
+        fontFamily = Chirp,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp
     )
-    */
 )
