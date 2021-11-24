@@ -12,6 +12,7 @@
         <activity
             android:name=".ui.activities.MessagesActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:label="@string/title_activity_messages"
             android:theme="@style/Theme.StreamUICustomization.NoActionBar" />
         <activity
