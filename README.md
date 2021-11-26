@@ -1,21 +1,25 @@
 # Customizing Stream Compose UI Components
-Stream’s Compose UI components make it easy for you to easily customize to your own requirements. In this article, you'll learn how to add your own colors, shapes and types.
+Stream’s Compose UI components make it easy for you to customize them to your own requirements. In this article, you'll learn how to add your own colors, shapes and types.
 
 You can find all the code in this article [on GitHub](https://github.com/wangerekaharun/StreamUICustomization).
 
-**Note**: This article assumes you are unfamiliar with [Stream Jetpack Compose UI Components](https://getstream.io/blog/jetpack-compose-sdk/), checkout this [Jetpack Compose Chat Tutorial](https://getstream.io/chat/compose/tutorial/)
+**Note**: This article assumes you are familiar with Stream UI Components. If you're unfamiliar with [Stream Jetpack Compose UI Components](https://getstream.io/blog/jetpack-compose-sdk/), checkout this [Jetpack Compose Chat Tutorial](https://getstream.io/chat/compose/tutorial/)
 
 ## Understanding `ChatTheme` Component
 
-The `ChatTheme` component is the default wrapper for all your components. By default it has properties that style the whole application. Some of these properties include but not limited to: colors, typography and shapes. Using this, you can be able to provide a different set of colors, typography and shapes that apply to your whole chat app.
+The `ChatTheme` component is the default wrapper for all your components. By default, it has properties that style the whole application. Some of these properties include but not limited to: colors, typography and shapes. Using this, you can be able to provide a different set of colors, typography and shapes that apply to your whole chat app.
 
 ## Customizing your `ChatTheme` Component
 
-To custom the `ChatTheme` component, you need to provide you own colors, shapes and typography. Doing this will overrid e the default ones provided by `ChatTheme`.
+To customize the `ChatTheme` component, you need to provide you own colors, shapes and typography. Doing this will override the default implementation provided by `ChatTheme`.
+
+You'll be learning how you can add your custom implementations to all the styling properties. You'll start with the colors.
 
 ## Adding Custom Colors
 
-To add colors from your own deisgn style, you need to use the `StreamColors` class. This contains all colors in the Stream color pallet.   
+To add colors from your own deisgn style, you need to use the `StreamColors` class. This contains all colors in the Stream color palette.   
+
+First, you need an object to define your own colors:
 
 ```kotlin
 object CustomColors {
@@ -29,9 +33,9 @@ object CustomColors {
 }
 ```
 
-In the code above you define custom colors that you'll use.
+In the code above you define the custom colors that you'll use. It has the different colors for components inside your app.
 
-This is how it looks like:
+With your colors defined, you need to now specify colors for different components inside the `StreamColors`. This is how it looks like:
 
 ```kotlin
 val CustomLightStreamColors
@@ -55,7 +59,7 @@ val CustomLightStreamColors
     )
 ```
 
-In the code above, you provide your custom colors for the various params defined in this class. This will aply to your whole app. You can always change this values. Additionaly, you can still re-use the default ones by using the `Stream.defaultColors()`. This retruns an isntance which contains the Stream color pallete.
+In the code above, you provide your custom colors for the various properties defined in this class. This will aply to your whole app. You can always change this values. Additionaly, you can still re-use the default ones by using the `Stream.defaultColors()`. This returns an instance which contains the Stream color palette.
 
 ## Adding Custom Shapes
 
@@ -72,6 +76,10 @@ val CustomStreamShapes = StreamShapes(
     bottomSheet = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
 )
 ```
+
+Using the `StreamShapes` class, you're able to define the shapes for attachments bottom sheets, input fields, avatar,  image thumbnail and the message bubbles too.
+
+The last bit on customization is the typography which you'll learn about next.
 
 ## Adding Custom Typography
 
@@ -158,11 +166,19 @@ val StreamCustomTypography = StreamTypography(
 )
 ```
 
-Now that you have all the custom components defined, it's time you apply them to `ChatTheme` .
+Here, you define all the text style properties that will be used across all the text style components in the app. With `StreamTypography` class, if you only want to change the font family and not the values for other components, you can change in like this:
+
+```kotlin
+StreamTypography.defaultTypography(SourceCodePro)
+```
+
+This only changes the font family and other properties like font size and weight will remaing the same as the default Stream UI Components values.
+
+Now that you have all the custom components defined, it's time you apply them to `ChatTheme`.
 
 ## Joining the Pieces Together
 
-Defining  custom `StreamTypography`, `StreamShapes` and `StreamColors` will not automatically apply to your app.You need to provide them to `ChatTheme`. You do this by:
+Defining  custom `StreamTypography`, `StreamShapes` and `StreamColors` will not automatically apply these changes to your app.You need to provide them to `ChatTheme`. You do this by wrapping you UI componets with `ChatTheme` like so:
 
 ```kotlin
 ChatTheme(
@@ -180,9 +196,11 @@ ChatTheme(
 }
 ```
 
+Here's a breakdown of what the code above does:
+
 - You use the `shapes` property to provide your custom shapes.
-- You use `colors` to provide your custom colors. Here you also need to provide colors on dark mode. The above example uses the default ones from Stream color pallete. You can choose to provide different one.
-- you use `typography` to provide your custom typography.
+- You use `colors` to provide your custom colors. Here you also need to provide colors on dark mode. The above example uses the default ones from Stream color palette. You can choose to provide different one.
+- You use `typography` to provide your custom typography.
 
 You have to do this in all places where you have the `ChatTheme` for example the MessagesScreen if you have one. Failure to do so will result in the screen using the default Stream theming.
 
@@ -192,11 +210,13 @@ Your app will now look like this:
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![channel_info_bottom_sheet](images/channel_info_bottom_sheet.png "Channel Info Bottom Sheet.") | ![attachments_bottom_sheet](images/attachments_bottom_sheet.png "Attachments Bottom Sheet.") |
 
+You can see that the color across the whole app has changed to be blue. Additionally, the colors to other components have changed as per the colors that are difined in the `CustomLightStreamColors`. The cornes on bottom sheets, input field, image thumber nail and messages bubbles and slighly more round. The avatar has changes from circle to squircle. The font for all text components is now **Source Code Pro**. 
 
+There's the `StreamDimens` class that has the different sizes that can be customize. In case you might need to customize the sizes.
 
 ## Conclusion
 
-In this article you've learnt how you can add your own custom theming to  Stream Compose UI components.
+In this article you've learnt how you can add your own custom theming to  Stream Compose UI components. As you've seen it's easy to provide your own custom values to the different properties. This makes it easy for you to provide your own design system along side the Stream UI Components.
 
 In case you missed it, you can find the full sample project with examples in this tutorial [on GitHub](https://github.com/wangerekaharun/StreamUICustomization).
 
